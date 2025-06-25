@@ -16,9 +16,9 @@ pipeline {
                     ls -la
                     echo "Recursive listing:"
                     find .
-                '''
+                    '''
                 }
-            }
+        }
         stage("Init") {
             steps {
                 script {
@@ -103,4 +103,5 @@ pipeline {
                 }
             }
         }
+    }
 }
