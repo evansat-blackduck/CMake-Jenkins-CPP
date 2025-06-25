@@ -8,20 +8,18 @@ pipeline {
         booleanParam(name: "RELEASE", defaultValue: false)
     }
     stages {
-        
-        stage('Debug Workspace') {
-            steps {
-                sh '''
-                    echo "Current directory:"
-                    pwd
-                    echo "Contents:"
-                    ls -la
-                    echo "Recursive listing:"
-                    find .
-                '''
-            }
+        stage('Debug Workspace') {
+            steps {
+                sh '''
+                    echo "Current directory:"
+                    pwd
+                    echo "Contents:"
+                    ls -la
+                    echo "Recursive listing:"
+                    find .
+                  '''
+                  }
         }
-
         stage("Init") {
             steps {
                 script {
