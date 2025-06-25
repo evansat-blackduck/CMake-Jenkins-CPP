@@ -3,11 +3,7 @@ def os
 
 pipeline {
     //agent { label 'CROSS-PLATFORM' }
-    agent {
-        node {
-            label 'CROSS-PLATFORM'
-        }
-    }
+    agent any
     parameters {
         booleanParam(name: "RELEASE", defaultValue: false)
     }
