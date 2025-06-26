@@ -38,8 +38,8 @@ pipeline {
                                 archiveArtifacts artifacts: 'build/Windows/Win64/source/App/*', fingerprint: true
                             } else {
                                 // Perform Linux related build task
-                            sh 'chmod +x build.sh'
-                            sh './build.sh Debug'
+                            sh 'chmod +x $WORKSPACE/build.sh'
+                            sh './$WORKSPACE/build.sh Debug'
                             archiveArtifacts artifacts: 'build/Linux/aarch64/source/App/*', fingerprint: true
                             }
                         }
@@ -64,8 +64,8 @@ pipeline {
                                 archiveArtifacts artifacts: 'build/Windows/Win64/source/App/*', fingerprint: true
                             }  else {
                                 // Perform Linux related build task
-                            sh 'chmod +x build.sh'
-                            sh './var/lib/jenkins/workspace/jenkins-cpp/build.sh Release'
+                            sh 'chmod +x $WORKSPACE/build.sh'
+                            sh './$WORKSPACE/build.sh Release'
                             archiveArtifacts artifacts: 'build/Linux/aarch64/source/App/*', fingerprint: true
                             }
                         }
@@ -86,8 +86,8 @@ pipeline {
                         bat "run.bat"
                     } else {
                         // Perform Linux related test task
-                        sh 'chmod +x /var/lib/jenkins/workspace/jenkins-cpp/run.sh'
-                        sh './var/lib/jenkins/workspace/jenkins-cpprun.sh'
+                        sh 'chmod +x $WORKSPACE/run.sh'
+                        sh './$WORKSPACE/jenkins-cpprun.sh'
                     }
                 }
             }
