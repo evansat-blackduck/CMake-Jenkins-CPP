@@ -19,6 +19,14 @@ pipeline {
         }
         stage("Build") {
             parallel {
+            steps {
+                dir("${env.WORKSPACE}") {
+                    sh '''
+                        chmod +x build.sh
+                        ./build.sh Debug
+                    '''
+                }
+            }
                 stage("Debug") {
                     when { expression { !params.RELEASE } }
                     steps {
