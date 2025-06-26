@@ -19,14 +19,6 @@ pipeline {
         }
         stage("Build") {
             parallel {
-            steps {
-                dir("${env.WORKSPACE}") {
-                    sh '''
-                        chmod +x build.sh
-                        ./build.sh Debug
-                    '''
-                }
-            }
                 stage("Debug") {
                     when { expression { !params.RELEASE } }
                     steps {
@@ -72,9 +64,11 @@ pipeline {
                                 archiveArtifacts artifacts: 'build/Windows/Win64/source/App/*', fingerprint: true
                             }  else {
                                 // Perform Linux related build task
-                            sh 'chmod +x $WORKSPACE/build.sh'
-                            sh '$WORKSPACE/build.sh Release'
-                            archiveArtifacts artifacts: 'build/Linux/aarch64/source/App/*', fingerprint: true
+                                dir("${env.WORKSPACE}") {
+                                    sh 'chmod +x $WORKSPACE/build.sh'
+                                    sh '$WORKSPACE/build.sh Release'
+                                }
+                                archiveArtifacts artifacts: 'build/Linux/aarch64/source/App/*', fingerprint: true
                             }
                         }
                     }
