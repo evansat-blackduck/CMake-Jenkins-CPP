@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 if [[ "$OSTYPE" == "darwin"* ]]; then
     if [ ! -d build/macOS ]; then
     mkdir build/macOS
