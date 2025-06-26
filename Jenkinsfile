@@ -39,7 +39,7 @@ pipeline {
                             } else {
                                 // Perform Linux related build task
                             sh 'chmod +x $WORKSPACE/build.sh'
-                            sh '.$WORKSPACE/build.sh Debug'
+                            sh '$WORKSPACE/build.sh Debug'
                             archiveArtifacts artifacts: 'build/Linux/aarch64/source/App/*', fingerprint: true
                             }
                         }
@@ -65,7 +65,7 @@ pipeline {
                             }  else {
                                 // Perform Linux related build task
                             sh 'chmod +x $WORKSPACE/build.sh'
-                            sh '.$WORKSPACE/build.sh Release'
+                            sh '$WORKSPACE/build.sh Release'
                             archiveArtifacts artifacts: 'build/Linux/aarch64/source/App/*', fingerprint: true
                             }
                         }
@@ -87,7 +87,7 @@ pipeline {
                     } else {
                         // Perform Linux related test task
                         sh 'chmod +x $WORKSPACE/run.sh'
-                        sh '.$WORKSPACE/jenkins-cpprun.sh'
+                        sh '$WORKSPACE/jenkins-cpprun.sh'
                     }
                 }
             }
