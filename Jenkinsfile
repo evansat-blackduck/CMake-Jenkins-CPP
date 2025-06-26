@@ -56,8 +56,9 @@ pipeline {
                                 // Perform Linux related build task
                                 dir("${env.WORKSPACE}") {
                                     echo "Workspace: ${env.WORKSPACE}"
-                                    sh 'chmod +x $WORKSPACE/build.sh'
-                                    sh '$WORKSPACE/build.sh Debug'
+                                    sh ''' 
+                                        bash -c "chmod +x $WORKSPACE/build.sh && $WORKSPACE/build.sh Debug" 
+                                    '''
                                 }
                                 archiveArtifacts artifacts: 'build/Linux/aarch64/source/App/*', fingerprint: true
                             }
