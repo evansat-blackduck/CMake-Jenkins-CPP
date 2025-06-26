@@ -65,6 +65,7 @@ pipeline {
                             }  else {
                                 // Perform Linux related build task
                                 dir("${env.WORKSPACE}") {
+                                    echo "${env.WORKSPACE}"
                                     sh 'chmod +x $WORKSPACE/build.sh'
                                     sh '$WORKSPACE/build.sh Release'
                                 }
