@@ -38,9 +38,12 @@ pipeline {
                                 archiveArtifacts artifacts: 'build/Windows/Win64/source/App/*', fingerprint: true
                             } else {
                                 // Perform Linux related build task
-                            sh 'chmod +x $WORKSPACE/build.sh'
-                            sh '$WORKSPACE/build.sh Debug'
-                            archiveArtifacts artifacts: 'build/Linux/aarch64/source/App/*', fingerprint: true
+                                dir("${env.WORKSPACE}") {
+                                    echo "Workspace: ${env.WORKSPACE}"
+                                    sh 'chmod +x $WORKSPACE/build.sh'
+                                    sh '$WORKSPACE/build.sh Debug'
+                                }
+                                archiveArtifacts artifacts: 'build/Linux/aarch64/source/App/*', fingerprint: true
                             }
                         }
                     }
