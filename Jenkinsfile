@@ -22,6 +22,17 @@ pipeline {
                 }
             }
         }
+        stage('Debug Workspace') {
+            steps {
+                sh '''
+                    echo "WORKSPACE: $WORKSPACE"
+                    echo "Listing contents of workspace:"
+                    ls -la "$WORKSPACE"
+                    echo "Searching for build.sh:"
+                    find "$WORKSPACE" -name build.sh
+                '''
+            }
+        }
         stage("Build") {
             parallel {
                 stage("Debug") {
