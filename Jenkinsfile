@@ -7,6 +7,7 @@ pipeline {
     parameters {
         booleanParam(name: "RELEASE", defaultValue: false)
     }
+    stages{
         stage("Init") {
             steps {
                 script {
@@ -92,4 +93,5 @@ pipeline {
             }
         }
     }
+}
 
