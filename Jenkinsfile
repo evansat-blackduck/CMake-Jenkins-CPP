@@ -8,6 +8,11 @@ pipeline {
         booleanParam(name: "RELEASE", defaultValue: false)
     }
     stages{
+        stage('Checkout') {
+            steps {
+                checkout scm
+                }
+            }
         stage("Init") {
             steps {
                 script {
