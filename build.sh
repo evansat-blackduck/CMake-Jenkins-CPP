@@ -35,10 +35,11 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     export VCPKG_TARGET_TRIPLET=arm64-linux
     # Environment variable VCPKG_FORCE_SYSTEM_BINARIES must be set on ARM and s390x platforms.
     export VCPKG_FORCE_SYSTEM_BINARIES=1
+    rm -rf build/Linux/aarch64
     cmake -S . -B build/Linux/aarch64 -G "Ninja" -DCMAKE_BUILD_TYPE=$1 -DCMAKE_TOOLCHAIN_FILE=cmake/Toolchain/x64-ARM-Linux.cmake
     cd build/Linux/aarch64
     # cmake --build . -- VERBOSE=1
-    cmake --build .
+    cmake --build build/Linux/aarch64
 else
     echo "macOS ( 64-bit ) or Linux ( ARM-64 ) not detected. For windows platform, run build.bat file."
 fi
