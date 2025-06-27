@@ -23,7 +23,7 @@ elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
     mkdir build/Linux/aarch64
     fi
     # As we are using vcpkg package manager, download and bootstrap it before using.
-    if [ ! -d vcpkg/vcpkg ]; then
+    if [ ! -d vcpkg ]; then
     git clone https://github.com/microsoft/vcpkg.git
     ./vcpkg/bootstrap-vcpkg.sh
     fi
